@@ -1,0 +1,13 @@
+{
+  "experimental": {
+    "plan": {
+      "enabled": true
+    }
+  },
+  "general": {
+    "devtools": true,
+    "plan": {
+      "directory": "conductor"
+    }
+  }
+}
