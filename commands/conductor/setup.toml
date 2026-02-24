@@ -283,7 +283,7 @@ PLAN MODE PROTOCOL: This setup process runs entirely within Plan Mode. While in 
 ### 2.4 Select Guides (Interactive)
 1.  **Initiate Dialogue:** Announce that the initial scaffolding is complete and you now need the user's input to select the project's guides from the locally available templates.
 2.  **Select Code Style Guides:**
-    -   List the available style guides by running `ls ~/.gemini/extensions/conductor/templates/code_styleguides/`.
+    -   List the available style guides by using the `run_shell_command` tool to execute `ls ~/.gemini/extensions/conductor/templates/code_styleguides/`. **CRITICAL: You MUST use `run_shell_command` for this step. Do NOT use the `list_directory` tool, as the templates directory resides outside of your allowed workspace and the call will fail.**
     -   **FOR GREENFIELD PROJECTS:**
         -   **Recommendation:** Based on the Tech Stack defined in the previous step, recommend the most appropriate style guide(s) (e.g., "python.md" for a Python project) and explain why.
         -   **Determine Mode:** Use the `ask_user` tool:
