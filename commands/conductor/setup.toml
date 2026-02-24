@@ -424,9 +424,25 @@ PLAN MODE PROTOCOL: This setup process runs entirely within Plan Mode. While in 
         -   **Note:** Do NOT include an "Autogenerate" option here.
         -   **Interaction Flow:** Wait for the user's response, then proceed to the next step.
 
-6.  **Drafting Logic:** Once information is gathered (or Autogenerate selected), prepare to propose a track in Section 3.2.
+6.  **Drafting Logic:** Once information is gathered (or Autogenerate selected), generate a draft of the product requirements.
     -   **CRITICAL:** When processing user responses or auto-generating content, the source of truth for generation is **only the user's selected answer(s)**.
-7.  **Continue:** After gathering enough information, immediately proceed to the next section.
+7.  **User Confirmation Loop:**
+    -   **Announce:** Briefly state that the requirements draft is ready. Do NOT repeat the request to "review" or "approve" in the chat.
+    -   **Ask for Approval:** Use the `ask_user` tool to request confirmation. You MUST embed the drafted requirements directly into the `question` field so the user can review them.
+        - **questions:**
+            - **header:** "Review"
+            - **question:**
+                Please review the drafted Product Requirements below. What would you like to do next?
+
+                ---
+
+                <Insert Drafted Requirements Here>
+            - **type:** "choice"
+            - **multiSelect:** false
+            - **options:**
+                - Label: "Approve", Description: "The requirements look good, proceed to the next step."
+                - Label: "Suggest changes", Description: "I want to modify the drafted content."
+8.  **Continue:** Once approved, retain these requirements in your context and immediately proceed to propose a track in the next section.
 
 ### 3.2 Propose a Single Initial Track (Automated + Approval)
 1.  **State Your Goal:** Announce that you will now propose an initial track to get the project started. Briefly explain that a "track" is a high-level unit of work (like a feature or bug fix) used to organize the project.
